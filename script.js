@@ -6,7 +6,7 @@ const finalScoreDisplay = document.getElementById('finalScore');
 const restartButton = document.getElementById('restart');
 const gameOverDisplay = document.getElementById('gameOver');
 let score = 0;
-let highScore = localStorage.getItem('2048-highscore') || 0;
+let highScore = parseInt(localStorage.getItem('2048-highscore')) || 0;
 let tiles = [];
 
 function initGame() {
@@ -32,7 +32,7 @@ function updateScores() {
 function checkAndUpdateHighScore() {
     if (score > highScore) {
         highScore = score;
-        localStorage.setItem('2048-highscore', highScore);
+        localStorage.setItem('2048-highscore', highScore.toString());
         updateScores();
     }
 }
