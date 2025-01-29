@@ -23,21 +23,24 @@ body {
 }
 
 .game-board {
+    --tile-size: 80px;
+    --gap-size: 10px;
+    --padding-size: 10px;
+    
     display: grid;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: repeat(4, 100px);
-    gap: 12px;
+    grid-template-columns: repeat(4, var(--tile-size));
+    grid-template-rows: repeat(4, var(--tile-size));
+    gap: var(--gap-size);
     background-color: #bbada0;
     border-radius: 6px;
-    padding: 12px;
-    width: fit-content;
-    height: fit-content;
-    margin: 0 auto;
+    padding: var(--padding-size);
+    aspect-ratio: 1;
+    margin: 0 auto 20px;
 }
 
 .tile {
-    width: 100px;
-    height: 100px;
+    width: var(--tile-size);
+    height: var(--tile-size);
     margin: 0;
     padding: 0;
     background-color: rgba(238, 228, 218, 0.35);
@@ -163,15 +166,12 @@ button:hover {
 
 @media (max-width: 500px) {
     .game-board {
-        grid-template-columns: repeat(4, 70px);
-        grid-template-rows: repeat(4, 70px);
-        gap: 10px;
-        padding: 10px;
+        --tile-size: 60px;
+        --gap-size: 8px;
+        --padding-size: 8px;
     }
 
     .tile {
-        width: 70px;
-        height: 70px;
         font-size: 24px;
     }
 
