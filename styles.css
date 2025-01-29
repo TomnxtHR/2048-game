@@ -1,0 +1,134 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #faf8ef;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+    position: relative;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    background-color: #bbada0;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.tile {
+    background-color: rgba(238, 228, 218, 0.35);
+    width: 80px;
+    height: 80px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #776e65;
+    transition: all 0.15s ease-in-out;
+}
+
+.tile-2 { background-color: #eee4da; }
+.tile-4 { background-color: #ede0c8; }
+.tile-8 { background-color: #f2b179; color: #f9f6f2; }
+.tile-16 { background-color: #f59563; color: #f9f6f2; }
+.tile-32 { background-color: #f67c5f; color: #f9f6f2; }
+.tile-64 { background-color: #f65e3b; color: #f9f6f2; }
+.tile-128 { background-color: #edcf72; color: #f9f6f2; font-size: 28px; }
+.tile-256 { background-color: #edcc61; color: #f9f6f2; font-size: 28px; }
+.tile-512 { background-color: #edc850; color: #f9f6f2; font-size: 28px; }
+.tile-1024 { background-color: #edc53f; color: #f9f6f2; font-size: 24px; }
+.tile-2048 { background-color: #edc22e; color: #f9f6f2; font-size: 24px; }
+
+.score-container {
+    font-size: 24px;
+    font-weight: bold;
+    color: #776e65;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+button:hover {
+    background-color: #7f6a56;
+}
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(238, 228, 218, 0.8);
+    z-index: 10;
+    animation: fadeIn 0.8s ease-in;
+}
+
+.game-over.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-over-content {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.game-over-content h2 {
+    color: #776e65;
+    font-size: 32px;
+    margin: 0 0 15px 0;
+}
+
+.game-over-content p {
+    color: #776e65;
+    font-size: 24px;
+    margin: 0 0 20px 0;
+}
+
+.restart-button {
+    background-color: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    margin-top: 20px;
+}
+
+.restart-button:hover {
+    background-color: #7f6a56;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
