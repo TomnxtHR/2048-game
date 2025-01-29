@@ -169,6 +169,35 @@ button:hover {
     background-color: #7f6a56;
 }
 
+.game-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #776e65;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: linear-gradient(45deg, #776e65, #bbada0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px;
+    position: relative;
+}
+
+.game-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(45deg, #776e65, #bbada0);
+    border-radius: 2px;
+}
+
 @media (max-width: 500px) {
     .game-board {
         --tile-size: 60px;
