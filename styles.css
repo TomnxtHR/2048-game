@@ -50,6 +50,23 @@ body {
 .tile-1024 { background-color: #edc53f; color: #f9f6f2; font-size: 24px; }
 .tile-2048 { background-color: #edc22e; color: #f9f6f2; font-size: 24px; }
 
+.scores {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.score, .high-score {
+    background-color: #bbada0;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: white;
+}
+
+.high-score {
+    background-color: #8f7a66;
+}
+
 .score-container {
     font-size: 24px;
     font-weight: bold;

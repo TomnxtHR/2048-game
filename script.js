@@ -1,16 +1,19 @@
 const board = document.getElementById('board');
 const scoreDisplay = document.getElementById('score');
+const highScoreDisplay = document.getElementById('highScore');
+const gameOverHighScoreDisplay = document.getElementById('gameOverHighScore');
 const finalScoreDisplay = document.getElementById('finalScore');
 const restartButton = document.getElementById('restart');
 const gameOverDisplay = document.getElementById('gameOver');
 let score = 0;
+let highScore = localStorage.getItem('2048-highscore') || 0;
 let tiles = [];
 
 function initGame() {
     // Rensa spelplanen
     tiles = Array.from({ length: 16 }, () => 0);
     score = 0;
-    scoreDisplay.textContent = `Score: ${score}`;
+    updateScores();
     gameOverDisplay.classList.remove('show');
     
     // Lägg till två brickor på olika positioner
@@ -18,6 +21,20 @@ function initGame() {
     addInitialTile();
     
     updateBoard();
+}
+
+function updateScores() {
+    scoreDisplay.textContent = `Score: ${score}`;
+    highScoreDisplay.textContent = `High Score: ${highScore}`;
+    gameOverHighScoreDisplay.textContent = `High Score: ${highScore}`;
+}
+
+function checkAndUpdateHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('2048-highscore', highScore);
+        updateScores();
+    }
 }
 
 function addInitialTile() {
@@ -46,7 +63,7 @@ function updateBoard() {
         tileElement.innerText = tile === 0 ? '' : tile;
         board.appendChild(tileElement);
     });
-    scoreDisplay.textContent = `Score: ${score}`;
+    updateScores();
     checkWin();
     if (checkGameOver()) {
         restartButton.disabled = false;
@@ -70,7 +87,9 @@ function checkGameOver() {
 }
 
 function showGameOver() {
+    checkAndUpdateHighScore();
     finalScoreDisplay.textContent = score;
+    gameOverHighScoreDisplay.textContent = highScore;
     gameOverDisplay.classList.add('show');
 }
 
@@ -94,6 +113,7 @@ function move(direction) {
             if (numbers[i] === numbers[i + 1]) {
                 numbers[i] *= 2;
                 score += numbers[i];
+                checkAndUpdateHighScore();
                 numbers.splice(i + 1, 1);
                 moved = true;
             }
