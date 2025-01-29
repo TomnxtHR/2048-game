@@ -15,19 +15,20 @@ body {
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 15px;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 15px;
     background-color: #bbada0;
     border-radius: 6px;
     padding: 15px;
-    margin-bottom: 20px;
-    position: relative;
+    margin: 0 auto 20px;
+    width: fit-content;
 }
 
 .tile {
+    width: 100px;
+    height: 100px;
     background-color: rgba(238, 228, 218, 0.35);
-    width: 80px;
-    height: 80px;
     border-radius: 3px;
     display: flex;
     justify-content: center;
@@ -143,6 +144,24 @@ button:hover {
 
 .restart-button:hover {
     background-color: #7f6a56;
+}
+
+@media (max-width: 500px) {
+    .game-board {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .tile {
+        width: 70px;
+        height: 70px;
+        font-size: 24px;
+    }
+
+    .tile-128, .tile-256, .tile-512 { font-size: 20px; }
+    .tile-1024, .tile-2048 { font-size: 18px; }
 }
 
 @keyframes fadeIn {
