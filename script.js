@@ -56,13 +56,25 @@ function addTile() {
 
 function updateBoard() {
     board.innerHTML = '';
-    tiles.forEach(tile => {
-        const tileElement = document.createElement('div');
-        tileElement.classList.add('tile');
-        tileElement.classList.add(`tile-${tile}`);
-        tileElement.innerText = tile === 0 ? '' : tile;
-        board.appendChild(tileElement);
-    });
+    // Skapa en 4x4 grid
+    for (let row = 0; row < 4; row++) {
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('board-row');
+        
+        for (let col = 0; col < 4; col++) {
+            const index = row * 4 + col;
+            const tileElement = document.createElement('div');
+            tileElement.classList.add('tile');
+            if (tiles[index] > 0) {
+                tileElement.classList.add(`tile-${tiles[index]}`);
+                tileElement.innerText = tiles[index];
+            }
+            rowDiv.appendChild(tileElement);
+        }
+        
+        board.appendChild(rowDiv);
+    }
+    
     updateScores();
     checkWin();
     if (checkGameOver()) {
